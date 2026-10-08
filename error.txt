@@ -1,0 +1,53 @@
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -ffreestanding -fdata-sections -ffunction-sections -I. -IFreeRTOS-Kernel/include -IFreeRTOS-Kernel/portable/GCC/ARM_CM3 -c main.c -o build/main.o
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -ffreestanding -fdata-sections -ffunction-sections -I. -IFreeRTOS-Kernel/include -IFreeRTOS-Kernel/portable/GCC/ARM_CM3 -c FreeRTOS-Kernel/tasks.c -o build/FreeRTOS-Kernel/tasks.o
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -ffreestanding -fdata-sections -ffunction-sections -I. -IFreeRTOS-Kernel/include -IFreeRTOS-Kernel/portable/GCC/ARM_CM3 -c FreeRTOS-Kernel/portable/GCC/ARM_CM3/port.c -o build/FreeRTOS-Kernel/portable/GCC/ARM_CM3/port.o
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -ffreestanding -fdata-sections -ffunction-sections -I. -IFreeRTOS-Kernel/include -IFreeRTOS-Kernel/portable/GCC/ARM_CM3 -c FreeRTOS-Kernel/portable/MemMang/heap_4.c -o build/FreeRTOS-Kernel/portable/MemMang/heap_4.o
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -ffreestanding -fdata-sections -ffunction-sections -I. -IFreeRTOS-Kernel/include -IFreeRTOS-Kernel/portable/GCC/ARM_CM3 -c startup_stm32f103.s -o build/startup_stm32f103.o
+arm-none-eabi-gcc build/main.o build/FreeRTOS-Kernel/tasks.o build/FreeRTOS-Kernel/portable/GCC/ARM_CM3/port.o build/FreeRTOS-Kernel/portable/MemMang/heap_4.o build/startup_stm32f103.o -mcpu=cortex-m3 -mthumb -Tstm32f103.ld -Wl,--gc-sections -Wl,-Map=build/btt4.map --specs=nosys.specs -o build/btt4.elf
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-closer.o): in function `_close_r':
+/build/newlib-Ipb6mw/newlib-4.6.0.20260123/build/arm-none-eabi/thumb/v7-m/nofp/newlib/../../../../../../newlib/libc/reent/closer.c:47:(.text+0xc): warning: _close is not implemented and will always fail
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-closer.o): note: the message above does not take linker garbage collection into account
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+/build/newlib-Ipb6mw/newlib-4.6.0.20260123/build/arm-none-eabi/thumb/v7-m/nofp/newlib/../../../../../../newlib/libc/reent/lseekr.c:49:(.text+0x14): warning: _lseek is not implemented and will always fail
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lseekr.o): note: the message above does not take linker garbage collection into account
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-readr.o): in function `_read_r':
+/build/newlib-Ipb6mw/newlib-4.6.0.20260123/build/arm-none-eabi/thumb/v7-m/nofp/newlib/../../../../../../newlib/libc/reent/readr.c:49:(.text+0x14): warning: _read is not implemented and will always fail
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-readr.o): note: the message above does not take linker garbage collection into account
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-writer.o): in function `_write_r':
+/build/newlib-Ipb6mw/newlib-4.6.0.20260123/build/arm-none-eabi/thumb/v7-m/nofp/newlib/../../../../../../newlib/libc/reent/writer.c:49:(.text+0x14): warning: _write is not implemented and will always fail
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-writer.o): note: the message above does not take linker garbage collection into account
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: build/FreeRTOS-Kernel/tasks.o: in function `prvInitialiseNewTask':
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:1921:(.text.prvInitialiseNewTask+0xd2): undefined reference to `vListInitialiseItem'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialiseItem): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:1921:(.text.prvInitialiseNewTask+0xd2): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:1922:(.text.prvInitialiseNewTask+0xdc): undefined reference to `vListInitialiseItem'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialiseItem): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:1922:(.text.prvInitialiseNewTask+0xdc): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: build/FreeRTOS-Kernel/tasks.o: in function `prvInitialiseTaskLists':
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6181:(.text.prvInitialiseTaskLists+0x1c): undefined reference to `vListInitialise'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialise): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6181:(.text.prvInitialiseTaskLists+0x1c): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6184:(.text.prvInitialiseTaskLists+0x2e): undefined reference to `vListInitialise'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialise): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6184:(.text.prvInitialiseTaskLists+0x2e): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6185:(.text.prvInitialiseTaskLists+0x34): undefined reference to `vListInitialise'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialise): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6185:(.text.prvInitialiseTaskLists+0x34): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6186:(.text.prvInitialiseTaskLists+0x3a): undefined reference to `vListInitialise'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialise): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6186:(.text.prvInitialiseTaskLists+0x3a): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6196:(.text.prvInitialiseTaskLists+0x40): undefined reference to `vListInitialise'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInitialise): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:6196:(.text.prvInitialiseTaskLists+0x40): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: build/FreeRTOS-Kernel/tasks.o: in function `prvAddCurrentTaskToDelayedList':
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8704:(.text.prvAddCurrentTaskToDelayedList+0x24): undefined reference to `uxListRemove'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (uxListRemove): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8704:(.text.prvAddCurrentTaskToDelayedList+0x24): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8739:(.text.prvAddCurrentTaskToDelayedList+0xba): undefined reference to `vListInsert'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInsert): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8739:(.text.prvAddCurrentTaskToDelayedList+0xba): dangerous relocation: unsupported relocation
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: /home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8746:(.text.prvAddCurrentTaskToDelayedList+0xca): undefined reference to `vListInsert'
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/bin/ld: (vListInsert): Unknown destination type (ARM/Thumb) in build/FreeRTOS-Kernel/tasks.o
+/home/nguyenvntoan/Downloads/btt4_FreeRTOS_STM32F103 (2)/btt4/FreeRTOS-Kernel/tasks.c:8746:(.text.prvAddCurrentTaskToDelayedList+0xca): dangerous relocation: unsupported relocation
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:31: build/btt4.elf] Error 1
